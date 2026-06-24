@@ -2,25 +2,82 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio 3 - Personas (React)</title>
+    <title>Ejercicio 3 - React</title>
     <link rel="stylesheet" href="styles.css">
-    
-    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.29.7/babel.min.js"></script>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        
+        /* Estilos del menú */
+        nav { background: #333; padding: 15px; margin-bottom: 20px; border-radius: 4px; }
+        nav a { color: white; margin-right: 15px; text-decoration: none; font-weight: bold; }
+        nav a:hover { text-decoration: underline; }
+
+        /* Estilos del ejercicio */
+        form { display: flex; gap: 10px; margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 8px; border: 1px solid #ccc; text-align: center; }
+    </style>
 </head>
 <body>
+
     <nav>
         <a href="index.html">Inicio</a>
+        <a href="FlexBox.html">Ejercicio 1</a>
+        <a href="Personas.html">Ejercicio 2 </a>
     </nav>
 
-    <h2>Registro de Personas con cálculo de IMC (React Component)</h2>
-    
     <div id="root"></div>
 
-    <a href="index.html" class="back-link">← Volver al inicio</a>
+    <script type="text/babel">
+        const { useState } = React;
 
-    <script type="text/babel" src="react.js"></script>
+        function App() {
+            const [personas, setPersonas] = useState([]);
+            const [form, setForm] = useState({ nombre: '', apellido: '', edad: '', altura: '', peso: '' });
+
+            const agregarPersona = (e) => {
+                e.preventDefault();
+                const alturaM = parseFloat(form.altura) / 100;
+                const imc = (parseFloat(form.peso) / (alturaM * alturaM)).toFixed(2);
+                setPersonas([...personas, { ...form, id: Date.now(), imc }]);
+                setForm({ nombre: '', apellido: '', edad: '', altura: '', peso: '' });
+            };
+
+            return (
+                <div>
+                    <h1>Gestión de Personas</h1>
+                    <form onSubmit={agregarPersona}>
+                        <input placeholder="Nombre" value={form.nombre} onChange={e => setForm({...form, nombre: e.target.value})} required />
+                        <input placeholder="Apellido" value={form.apellido} onChange={e => setForm({...form, apellido: e.target.value})} required />
+                        <input type="number" placeholder="Edad" value={form.edad} onChange={e => setForm({...form, edad: e.target.value})} required />
+                        <input type="number" placeholder="Altura (cm)" value={form.altura} onChange={e => setForm({...form, altura: e.target.value})} required />
+                        <input type="number" placeholder="Peso (kg)" value={form.peso} onChange={e => setForm({...form, peso: e.target.value})} required />
+                        <button type="submit">Agregar</button>
+                    </form>
+
+                    <table>
+                        <thead>
+                            <tr><th>Nombre</th><th>Apellido</th><th>Edad</th><th>Altura</th><th>Peso</th><th>IMC</th><th>Acción</th></tr>
+                        </thead>
+                        <tbody>
+                            {personas.map(p => (
+                                <tr key={p.id}>
+                                    <td>{p.nombre}</td><td>{p.apellido}</td><td>{p.edad}</td>
+                                    <td>{p.altura}</td><td>{p.peso}</td><td>{p.imc}</td>
+                                    <td><button onClick={() => setPersonas(personas.filter(x => x.id !== p.id))}>Eliminar</button></td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(<App />);
+    </script>
 </body>
 </html>
