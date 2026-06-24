@@ -3,17 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TP 3 - Inicio</title>
+    <title>FitZone Analytics - Inicio</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Trabajo Práctico 3: Flexbox, formularios dinámicos y React</h1>
+    <h1>FitZone Analytics</h1>
+    
     <nav>
-        <a href="index.html">Inicio</a>
-        <a href="flexbox.html">Ejercicio 1 (Flexbox)</a>
-        <a href="personas.html">Ejercicio 2 (Personas JS)</a>
-        <a href="react.html">Ejercicio 3 (React)</a>
+        <a href="index.html" class="active">Inicio</a>
+        <a href="flexbox.html">Control de Stock</a>
+        <a href="personas.html">Módulo Antropométrico JS</a>
+        <a href="react.html">Módulo Antropométrico React</a>
     </nav>
-    <p>Seleccioná cualquiera de las opciones del menú superior para evaluar los ejercicios.</p>
+
+    <p class="welcome-text">Bienvenido al panel central de analítica deportiva. Seleccioná uno de los módulos operativos desde la barra superior para comenzar:</p>
+
+    <!-- Contenedores informativos sin los botones redundantes de abajo -->
+    <div class="flex-container" style="margin-top: 30px;">
+        
+        <!-- Tarjeta 1: Stock -->
+        <div class="card" style="width: 320px;">
+            <h3 style="color: var(--accent-green); margin-bottom: 12px; font-size: 1.4rem;">📦 Control de Stock</h3>
+            <p style="line-height: 1.5;">Monitoreo interactivo del catálogo de suplementación, stock crítico de proteínas y equipamiento pesado del gimnasio.</p>
+            <p style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 15px;">Tecnologías: CSS Flexbox</p>
+        </div>
+
+        <!-- Tarjeta 2: JS Nativo -->
+        <div class="card" style="width: 320px;">
+            <h3 style="color: var(--accent-green); margin-bottom: 12px; font-size: 1.4rem;">📊 Evaluación JS</h3>
+            <p style="line-height: 1.5;">Registro dinámico de atletas con diagnóstico de IMC utilizando manipulación del DOM y persistencia en almacenamiento local.</p>
+            <p style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 15px;">Tecnologías: Vanilla JS & Storage</p>
+        </div>
+
+        <!-- Tarjeta 3: React (Solo Maqueta) -->
+        <div class="card" style="width: 320px;">
+            <h3 style="color: var(--accent-green); margin-bottom: 12px; font-size: 1.4rem;">📐 Vista de Diseño React</h3>
+            <p style="line-height: 1.5;">Prototipo estático de la interfaz para visualizar la estructura del componente web y su adaptabilidad visual.</p>
+            <p style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 15px;">Tecnologías: Maquetado UI</p>
+        </div>
+
+    </div>
 </body>
 </html>

@@ -1,10 +1,10 @@
 const productos = [
-    { id: 1, nombre: "Laptop Pro", categoria: "Tecnología", stock: 15 },
-    { id: 2, nombre: "Teclado Mecánico", categoria: "Accesorios", stock: 5 },
-    { id: 3, nombre: "Monitor 4K", categoria: "Tecnología", stock: 3 },
-    { id: 4, nombre: "Mouse Gamer", categoria: "Accesorios", stock: 22 },
-    { id: 5, nombre: "Auriculares BT", categoria: "Audio", stock: 8 },
-    { id: 6, nombre: "Micrófono Estudio", categoria: "Audio", stock: 12 }
+    { id: 1, nombre: "Proteína Whey Isolada", categoria: "Suplementos", stock: 15 },
+    { id: 2, nombre: "Creatina Monohidratada", categoria: "Suplementos", stock: 5 },
+    { id: 3, nombre: "Cinto Powerlifting de Cuero", categoria: "Equipamiento", stock: 3 },
+    { id: 4, nombre: "Straps de Agarre Pro", categoria: "Accesorios", stock: 22 },
+    { id: 5, nombre: "Goma de Alta Resistencia", categoria: "Accesorios", stock: 8 },
+    { id: 6, nombre: "Pre-Entreno Explosivo", categoria: "Suplementos", stock: 12 }
 ];
 
 let destacarAltos = false;
@@ -33,7 +33,7 @@ function renderCards() {
 
 button.addEventListener("click", () => {
     destacarAltos = !destacarAltos;
-    button.textContent = destacarAltos ? "Mostrar todos normal" : "Destacar elementos con stock alto";
+    button.textContent = destacarAltos ? "Mostrar stock estándar" : "Destacar stock alto (Suplementos Premium)";
     renderCards();
 });
 
